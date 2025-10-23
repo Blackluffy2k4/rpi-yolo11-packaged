@@ -1,24 +1,25 @@
-# Raspberry Pi YOLO11 Starter (Detection, Segmentation, Tracking)
-A small, battle-tested starter for running **Ultralytics YOLO11** on **Raspberry Pi (Pi 4/5, Raspberry Pi OS Bookworm 64‑bit)** with **Picamera2 + OpenCV + cvzone** — including dataset capture, labeling with LabelImg, training, and real‑time detection/segmentation with optional tracking (BoT‑SORT/ByteTrack).
+# rpi-yolo11-packaged (Raspberry Pi · YOLO11 · Picamera2 · OpenCV)
 
-## Quick start
+Bộ khởi tạo đã kiểm chứng để chạy **Ultralytics YOLO11** trên **Raspberry Pi 4/5 (Raspberry Pi OS Bookworm 64-bit)**: thu ảnh → gán nhãn (LabelImg) → huấn luyện (detect/seg) → suy luận thời gian thực + theo dõi ID (BoT-SORT/ByteTrack).
+
+## 1) Yêu cầu
+- Raspberry Pi 4/5, Raspberry Pi OS **Bookworm 64-bit**.
+- Camera hỗ trợ **libcamera** (PiCamera V2/V3/HQ).
+- Python 3.9+.
+- Kết nối mạng để cài gói.
+
+## 2) Cài đặt nhanh
+
 ```bash
+# clone hoặc copy repo vào Pi
 cd rpi-yolo11-packaged
+
+# tạo môi trường ảo + cài phụ thuộc hệ thống tối thiểu + Python deps (pinned)
 bash scripts/setup_venv.sh
 source .venv/bin/activate
+
+# (khuyên dùng) thêm ~/.local/bin vào PATH để gọi lệnh `yolo`
 bash scripts/fix_path.sh
+
+# kiểm tra phiên bản đã cài
 python scripts/verify_install.py
-
-python scripts/capture_images.py --out-dir dataset/images/train --width 640 --height 480 --hflip --vflip --interval 0.5
-
-bash scripts/labelimg_install.sh
-labelImg dataset/images/train dataset/classes.txt
-
-nano dataset/data.yaml
-
-bash scripts/train_detect.sh
-bash scripts/train_seg.sh
-
-python scripts/run_detect.py --model runs/detect/train/weights/best.pt --track
-python scripts/run_seg.py --model runs/segment/train/weights/best.pt --track
-```
