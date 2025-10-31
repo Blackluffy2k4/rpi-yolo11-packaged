@@ -6,4 +6,4 @@ python -m pip install -U pip setuptools wheel
 sudo apt update
 sudo apt install -y python3-picamera2 libatlas-base-dev libcap-dev
 python -m pip install -r requirements.txt
-echo '✅ Setup complete. Activate: source .venv/bin/activate'
+echo ' Setup complete. Activate: source .venv/bin/activate'
