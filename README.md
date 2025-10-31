@@ -1,6 +1,7 @@
 # Raspberry Pi YOLO11 Starter (Detection, Segmentation, Tracking)
 A small, battle-tested starter for running **Ultralytics YOLO11** on **Raspberry Pi (Pi 4/5, Raspberry Pi OS Bookworm 64‑bit)** with **Picamera2 + OpenCV + cvzone** — including dataset capture, labeling with LabelImg, training, and real‑time detection/segmentation with optional tracking (BoT‑SORT/ByteTrack).
 
+Đầu tiên trên raspberry pi hãy tải tệp này về máy, thực hiện theo các câu lệnh dưới đây, chuẩn bị môi trường.
 ```bash
 # 1) Chuẩn bị venv
 sudo apt update
@@ -26,6 +27,13 @@ print("cvzone:", pr.get_distribution("cvzone").version)
 PY
 
 ```
+Chạy 2 file scripts/run_detect.py hoặc scripts/run_seg.py để thực theo thời gian thực.
+File scripts/capture_images.py là code dùng để chụp nhiều hình liên tục nhằm mục đích tạo source train custom.
+Trên terminal, chạy lệnh
+```bash 
+sudo chmod 775 labelimg_install.sh
+```
+Sau đó chạy file bash này để tải tài nguyên.
 ## Quick start
 ```bash
 cd rpi-yolo11-packaged
